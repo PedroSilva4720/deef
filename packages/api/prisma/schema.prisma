@@ -1,0 +1,66 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Customer {
+  id              String         @unique @default(cuid())
+  name            String?
+  email           String?
+  phone           String?
+  createdAt       String
+  postId          String?        @unique
+  post            Post?          @relation(fields: [postId], references: [id])
+  discountTokenId String?        @unique
+  discountToken   DiscountToken? @relation(fields: [discountTokenId], references: [id])
+  companyId       String
+  company         Company        @relation(fields: [companyId], references: [id])
+}
+
+model Post {
+  id        String    @unique @default(cuid())
+  quests    Json
+  createdAt String
+  Customer  Customer?
+}
+
+model DiscountToken {
+  id            String    @unique @default(cuid())
+  discountToken String
+  createdAt     String
+  validUntil    String
+  used          Boolean
+  usedAt        String
+  Customer      Customer?
+}
+
+model Company {
+  id          String     @unique @default(cuid())
+  companyName String
+  createdAt   String
+  Quests      Quests[]
+  User        User[]
+  Customer    Customer[]
+}
+
+model Quests {
+  id        String  @unique @default(cuid())
+  quests    Json
+  updatedAt String
+  company   Company @relation(fields: [companyId], references: [id])
+  companyId String
+}
+
+model User {
+  id           String  @unique @default(cuid())
+  name         String
+  email        String  @unique
+  passwordHash String
+  createdAt    String
+  company      Company @relation(fields: [companyId], references: [id])
+  companyId    String
+}
