@@ -12,7 +12,7 @@ model Customer {
   name            String?
   email           String?
   phone           String?
-  createdAt       String
+  createdAt       DateTime       @default(now())
   postId          String?        @unique
   post            Post?          @relation(fields: [postId], references: [id])
   discountTokenId String?        @unique
@@ -24,27 +24,28 @@ model Customer {
 model Post {
   id        String    @unique @default(cuid())
   quests    Json
-  createdAt String
-  Customer  Customer?
+  createdAt DateTime  @default(now())
+  customer  Customer?
 }
 
 model DiscountToken {
   id            String    @unique @default(cuid())
   discountToken String
-  createdAt     String
+  createdAt     DateTime  @default(now())
   validUntil    String
   used          Boolean
   usedAt        String
-  Customer      Customer?
+  customer      Customer?
 }
 
 model Company {
-  id          String     @unique @default(cuid())
-  companyName String
-  createdAt   String
-  Quests      Quests[]
-  User        User[]
-  Customer    Customer[]
+  id              String     @unique @default(cuid())
+  companyName     String
+  companyUsername String
+  createdAt       DateTime
+  quests          Quests[]
+  user            User[]
+  customer        Customer[]
 }
 
 model Quests {
@@ -56,11 +57,11 @@ model Quests {
 }
 
 model User {
-  id           String  @unique @default(cuid())
+  id           String   @unique @default(cuid())
   name         String
-  email        String  @unique
+  email        String   @unique
   passwordHash String
-  createdAt    String
-  company      Company @relation(fields: [companyId], references: [id])
+  createdAt    DateTime
+  company      Company  @relation(fields: [companyId], references: [id])
   companyId    String
 }
