@@ -1,0 +1,152 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "@deef/api",
+    "description": "Swagger documentation for deef api",
+    "contact": {
+      "name": "Andoras",
+      "email": "pedro@andoras.com.br"
+    },
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/company": {
+      "post": {
+        "tags": ["company"],
+        "description": "Create a company",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "companyName": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "created"
+          }
+        }
+      }
+    },
+    "/user/{companyId}": {
+      "post": {
+        "description": "Create User",
+        "tags": ["user"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "companyId",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "The company ID"
+          }
+        ],
+        "responses": {}
+      }
+    },
+
+    "/user/name/{id}": {
+      "patch": {
+        "tags": ["user"],
+        "description": "Update user's name",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "newUserName": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "The user ID"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/user/password/{id}": {
+      "patch": {
+        "tags": ["user"],
+        "description": "update user's password",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "The user ID"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/user/{id}": {
+      "delete": {
+        "tags": ["user"],
+        "description": "Delete user",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "The user ID"
+          }
+        ],
+        "responses": {}
+      }
+    }
+  },
+  "servers": [{ "url": "http://localhost:9001", "description": "Dev server" }],
+  "components": {
+    "securitySchemes": {
+      "BasicAuth": {
+        "type": "http",
+        "scheme": "basic"
+      }
+    }
+  }
+}

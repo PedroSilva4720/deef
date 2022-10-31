@@ -50,7 +50,7 @@ export const updateUserName = async (req: Request, res: Response) => {
   }
 };
 
-export const updateUserPassowrd = async (req: Request, res: Response) => {
+export const updateUserPassword = async (req: Request, res: Response) => {
   const basicAuth = req.headers.authorization;
   const id = req.params.id;
 

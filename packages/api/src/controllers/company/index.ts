@@ -4,9 +4,7 @@ import { prisma } from './../../prisma';
 export const createCompany = async (req: Request, res: Response) => {
   const { companyName } = req.body;
 
-  const companyUsername = companyName.toLowerCase().replace(' ', '-');
-
-  console.log(companyUsername);
+  const companyUsername = companyName.toLowerCase().replaceAll(' ', '-');
 
   try {
     const createdCompany = await prisma.company.create({
