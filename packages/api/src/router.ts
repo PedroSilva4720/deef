@@ -1,15 +1,24 @@
-import { updateUserPassword, updateUserName } from './controllers/user/index';
 import { Router } from 'express';
-import { createCompany } from './controllers/company';
-import { createUserByCompanyId, deleteUser } from './controllers/user';
+
+import * as companyControllers from './controllers/company';
+import * as userControllers from './controllers/user';
+import * as middlewares from './controllers/user/middleware';
 
 export const router = Router();
 
 //company routes
-router.post('/company', createCompany);
+router.post('/company', companyControllers.createCompany);
 
 //manager (user) routes
-router.post('/user/:companyId', createUserByCompanyId);
-router.patch('/user/name/:id', updateUserName);
-router.patch('/user/password/:id', updateUserPassword);
-router.delete('/user/:id', deleteUser);
+router.post('/user/:companyId', userControllers.createUserByCompanyId);
+router.patch(
+  '/user/name/:id',
+  middlewares.userLogin,
+  userControllers.updateUserName
+);
+router.patch(
+  '/user/password/:id',
+  middlewares.userLogin,
+  userControllers.updateUserPassword
+);
+router.delete('/user/:id', middlewares.userLogin, userControllers.deleteUser);

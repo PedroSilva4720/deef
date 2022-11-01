@@ -70,10 +70,15 @@
       }
     },
 
-    "/user/name/{id}": {
+    "/user/name": {
       "patch": {
         "tags": ["user"],
         "description": "Update user's name",
+        "security": [
+          {
+            "BasicAuth": []
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -89,51 +94,28 @@
             }
           }
         },
-        "parameters": [
-          {
-            "name": "id",
-            "required": true,
-            "in": "query",
-            "schema": {
-              "type": "string"
-            },
-            "description": "The user ID"
-          }
-        ],
         "responses": {}
       }
     },
-    "/user/password/{id}": {
+    "/user/password": {
       "patch": {
         "tags": ["user"],
         "description": "update user's password",
-        "parameters": [
+        "security": [
           {
-            "name": "id",
-            "required": true,
-            "in": "query",
-            "schema": {
-              "type": "string"
-            },
-            "description": "The user ID"
+            "BasicAuth": []
           }
         ],
         "responses": {}
       }
     },
-    "/user/{id}": {
+    "/user": {
       "delete": {
         "tags": ["user"],
         "description": "Delete user",
-        "parameters": [
+        "security": [
           {
-            "name": "id",
-            "required": true,
-            "in": "query",
-            "schema": {
-              "type": "string"
-            },
-            "description": "The user ID"
+            "BasicAuth": []
           }
         ],
         "responses": {}

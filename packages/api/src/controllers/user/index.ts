@@ -32,12 +32,14 @@ export const createUserByCompanyId = async (req: Request, res: Response) => {
 
 export const updateUserName = async (req: Request, res: Response) => {
   const { newUserName } = req.body;
-  const id = req.params.id;
+  const { email } = res.locals.user;
+
+  console.log(newUserName);
 
   try {
     await prisma.user.update({
       where: {
-        id,
+        email,
       },
       data: {
         name: newUserName,
@@ -51,17 +53,14 @@ export const updateUserName = async (req: Request, res: Response) => {
 };
 
 export const updateUserPassword = async (req: Request, res: Response) => {
-  const basicAuth = req.headers.authorization;
-  const id = req.params.id;
-
-  const { password } = credentialsDecoderByBasicAuth(basicAuth);
+  const { email, password } = res.locals.user;
 
   const passwordHash = await hash(password);
 
   try {
     await prisma.user.update({
       where: {
-        id,
+        email,
       },
       data: {
         passwordHash,
@@ -75,12 +74,12 @@ export const updateUserPassword = async (req: Request, res: Response) => {
 };
 
 export const deleteUser = async (req: Request, res: Response) => {
-  const id = req.params.id;
+  const { email } = res.locals.user;
 
   try {
     await prisma.user.delete({
       where: {
-        id,
+        email,
       },
     });
 
