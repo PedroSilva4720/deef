@@ -3,6 +3,7 @@ import { hash } from 'argon2';
 
 import { prisma } from '../../prisma';
 import { credentialsDecoderByBasicAuth } from './services';
+import { InternalServerError } from '../../errors/Errors';
 
 export const createUserByCompanyId = async (req: Request, res: Response) => {
   const { name } = req.body;
@@ -14,19 +15,21 @@ export const createUserByCompanyId = async (req: Request, res: Response) => {
   const passwordHash = await hash(password);
 
   try {
-    await prisma.user.create({
-      data: {
-        name,
-        email,
-        passwordHash,
-        createdAt: new Date(),
-        companyId,
-      },
-    });
+    await prisma.user
+      .create({
+        data: {
+          name,
+          email,
+          passwordHash,
+          createdAt: new Date(),
+          companyId,
+        },
+      })
+      .catch(() => res.status(401).json({ message: 'Algo deu errado' }));
 
-    return res.json({ message: 'Usuário criado com sucesso!' });
+    return res.status(201).json({ message: 'Usuário criado com sucesso!' });
   } catch (error) {
-    throw new Error(error);
+    throw new InternalServerError(error);
   }
 };
 
@@ -48,7 +51,7 @@ export const updateUserName = async (req: Request, res: Response) => {
 
     return res.json({ message: 'Usuário atualizado com sucesso!' });
   } catch (error) {
-    throw new Error(error);
+    throw new InternalServerError(error);
   }
 };
 
@@ -69,7 +72,7 @@ export const updateUserPassword = async (req: Request, res: Response) => {
 
     return res.json({ message: 'Senha atualizada com sucesso!' });
   } catch (error) {
-    throw new Error(error);
+    throw new InternalServerError(error);
   }
 };
 
@@ -85,6 +88,6 @@ export const deleteUser = async (req: Request, res: Response) => {
 
     res.json({ message: 'Usuário excluído com sucesso!' });
   } catch (error) {
-    throw new Error(error);
+    throw new InternalServerError(error);
   }
 };
