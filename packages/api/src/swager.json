@@ -32,6 +32,12 @@
         "responses": {
           "201": {
             "description": "created"
+          },
+          "401": {
+            "description": "Empresa já existente"
+          },
+          "501": {
+            "description": "Internal server error"
           }
         }
       }
@@ -66,7 +72,17 @@
             "description": "The company ID"
           }
         ],
-        "responses": {}
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Usuário já existente"
+          },
+          "501": {
+            "description": "Internal Server Error"
+          }
+        }
       }
     },
 
