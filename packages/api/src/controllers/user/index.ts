@@ -49,7 +49,7 @@ export const updateUserName = async (req: Request, res: Response) => {
       },
     });
 
-    return res.json({ message: 'Usuário atualizado com sucesso!' });
+    return res.status(200).json({ message: 'Usuário atualizado com sucesso!' });
   } catch (error) {
     throw new InternalServerError(error);
   }
@@ -70,7 +70,7 @@ export const updateUserPassword = async (req: Request, res: Response) => {
       },
     });
 
-    return res.json({ message: 'Senha atualizada com sucesso!' });
+    return res.status(200).json({ message: 'Senha atualizada com sucesso!' });
   } catch (error) {
     throw new InternalServerError(error);
   }
@@ -86,7 +86,7 @@ export const deleteUser = async (req: Request, res: Response) => {
       },
     });
 
-    res.json({ message: 'Usuário excluído com sucesso!' });
+    res.status(200).json({ message: 'Usuário excluído com sucesso!' });
   } catch (error) {
     throw new InternalServerError(error);
   }

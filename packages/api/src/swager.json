@@ -110,7 +110,11 @@
             }
           }
         },
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "Updated"
+          }
+        }
       }
     },
     "/user/password": {
@@ -122,7 +126,11 @@
             "BasicAuth": []
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "Updated"
+          }
+        }
       }
     },
     "/user": {
@@ -134,7 +142,11 @@
             "BasicAuth": []
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "Deleted"
+          }
+        }
       }
     }
   },
