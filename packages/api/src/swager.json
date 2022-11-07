@@ -12,6 +12,8 @@
   "paths": {
     "/company": {
       "post": {
+        "summary": "Create Company",
+
         "tags": ["company"],
         "description": "Create a company",
         "requestBody": {
@@ -44,6 +46,7 @@
     },
     "/user/{companyId}": {
       "post": {
+        "summary": "Create user",
         "description": "Create User",
         "tags": ["user"],
         "requestBody": {
@@ -70,6 +73,15 @@
               "type": "string"
             },
             "description": "The company ID"
+          },
+          {
+            "in": "header",
+            "name": "auth",
+            "required": true,
+            "description": "JWT token",
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -88,15 +100,23 @@
 
     "/user/name": {
       "patch": {
+        "summary": "Update user's name",
         "tags": ["user"],
         "description": "Update user's name",
-        "security": [
+        "parameters": [
           {
-            "BasicAuth": []
+            "in": "header",
+            "name": "auth",
+            "required": true,
+            "description": "JWT token",
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "requestBody": {
           "required": true,
+
           "content": {
             "application/json": {
               "schema": {
@@ -119,11 +139,18 @@
     },
     "/user/password": {
       "patch": {
+        "summary": "Update user's password",
         "tags": ["user"],
         "description": "update user's password",
-        "security": [
+        "parameters": [
           {
-            "BasicAuth": []
+            "in": "header",
+            "name": "auth",
+            "required": true,
+            "description": "JWT token",
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -134,12 +161,41 @@
       }
     },
     "/user": {
-      "delete": {
+      "get": {
+        "summary": "User login",
         "tags": ["user"],
-        "description": "Delete user",
+        "description": "User Login with basic auth parameters",
         "security": [
           {
             "BasicAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User logged in and return the jwt token authenticated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete user",
+        "tags": ["user"],
+        "description": "Delete user",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "auth",
+            "required": true,
+            "description": "JWT token",
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
