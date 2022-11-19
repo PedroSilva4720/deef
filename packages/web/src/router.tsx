@@ -6,10 +6,6 @@ export const Router = () => {
       path: '/',
       element: <div>Hello world!</div>,
     },
-    {
-      path: '/test',
-      element: <p>Teste</p>,
-    },
   ]);
 
   return (
