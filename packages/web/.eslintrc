@@ -1,5 +1,5 @@
  {
-     "extends": ["eslint:recommended", "plugin:react/recommended", "airbnb", "plugin:@typescript-eslint/recommended"],
+     "extends": ["eslint:recommended", "plugin:react/recommended", "airbnb", "plugin:@typescript-eslint/recommended", "plugin:jsx-a11y/recommended"],
      "env": {
          "es2021": true,
          "node": true,
@@ -19,7 +19,8 @@
      "plugins": [
          "react",
          "prettier",
-         "@typescript-eslint"
+         "@typescript-eslint",
+         "jsx-a11y"
      ],
      "rules": {
          "react/jsx-indent": [1, 4],
