@@ -1,3 +1,4 @@
+import React from 'react';
 import * as LongInputComponents from './style';
 import { v4 as uuidV4 } from 'uuid';
 

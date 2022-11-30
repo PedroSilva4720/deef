@@ -1,3 +1,4 @@
+import React from 'react';
 import * as RateComponents from './styles';
 import { v4 as uuidV4 } from 'uuid';
 

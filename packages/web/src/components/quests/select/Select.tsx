@@ -1,3 +1,4 @@
+import React from 'react';
 import * as SelectComponents from './style';
 import { v4 as uuidV4 } from 'uuid';
 
@@ -15,11 +16,9 @@ export const Select: React.FC<{ options: string[]; label: string }> = ({
         <SelectComponents.SelectOption selected disabled />
         {options.map((item: string) => {
           return (
-            <SelectComponents.SelectOption
-              value={item}
-              key={item}
-              children={item}
-            />
+            <SelectComponents.SelectOption value={item} key={item}>
+              {item}
+            </SelectComponents.SelectOption>
           );
         })}
       </SelectComponents.SelectHtmlSelect>
