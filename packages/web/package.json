@@ -20,6 +20,7 @@
     "uuid": "^9.0.0"
   },
   "devDependencies": {
+    "@axe-core/react": "^4.5.2",
     "@babel/core": "^7.20.2",
     "@storybook/addon-actions": "^6.5.13",
     "@storybook/addon-essentials": "^6.5.13",
