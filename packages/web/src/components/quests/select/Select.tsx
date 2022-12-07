@@ -1,27 +1,60 @@
 import React from 'react';
+import * as SelectRadix from '@radix-ui/react-select';
+import { FiChevronDown, FiChevronUp, FiCheck } from 'react-icons/fi';
 import * as SelectComponents from './style';
 import { v4 as uuidV4 } from 'uuid';
 
-export const Select: React.FC<{ options: string[]; label: string }> = ({
-  options,
-  label,
-}) => {
+export const Select: React.FC<{
+  options: string[];
+  label: string;
+  placeholder?: string;
+  displayLabel: boolean;
+  setFunction: (value: string) => void;
+}> = ({ options, label, placeholder, setFunction, displayLabel }) => {
   const uuid = uuidV4();
   return (
     <SelectComponents.SelectContainer>
-      <SelectComponents.SelectLabel htmlFor={uuid}>
+      <SelectComponents.SelectLabel
+        htmlFor={uuid}
+        style={displayLabel ? { display: 'block' } : { display: 'none' }}
+      >
         {label}
       </SelectComponents.SelectLabel>
-      <SelectComponents.SelectHtmlSelect id={uuid}>
-        <SelectComponents.SelectOption selected disabled />
-        {options.map((item: string) => {
-          return (
-            <SelectComponents.SelectOption value={item} key={item}>
-              {item}
-            </SelectComponents.SelectOption>
-          );
-        })}
-      </SelectComponents.SelectHtmlSelect>
+
+      <SelectRadix.Root onValueChange={value => setFunction(value)}>
+        <SelectComponents.SelectTrigger aria-label={label} id={uuid}>
+          <SelectRadix.Value placeholder={placeholder} />
+          <SelectComponents.SelectIcon>
+            <FiChevronDown />
+          </SelectComponents.SelectIcon>
+        </SelectComponents.SelectTrigger>
+        <SelectRadix.Portal>
+          <SelectComponents.SelectContent>
+            <SelectComponents.SelectScrollUpButton>
+              <FiChevronUp />
+            </SelectComponents.SelectScrollUpButton>
+            <SelectComponents.SelectViewport>
+              {options.map((item: string) => {
+                return (
+                  <SelectComponents.SelectItem
+                    value={item}
+                    key={item}
+                    aria-label={item}
+                  >
+                    <SelectRadix.ItemText>{item}</SelectRadix.ItemText>
+                    <SelectComponents.SelectItemIndicator>
+                      <FiCheck />
+                    </SelectComponents.SelectItemIndicator>
+                  </SelectComponents.SelectItem>
+                );
+              })}
+            </SelectComponents.SelectViewport>
+            <SelectComponents.SelectScrollDownButton>
+              <FiChevronDown />
+            </SelectComponents.SelectScrollDownButton>
+          </SelectComponents.SelectContent>
+        </SelectRadix.Portal>
+      </SelectRadix.Root>
     </SelectComponents.SelectContainer>
   );
 };

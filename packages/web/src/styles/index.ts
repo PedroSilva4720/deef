@@ -1,12 +1,23 @@
+import { mint, blackA, mauve } from '@radix-ui/colors';
 import { createStitches } from '@stitches/react';
 
 export const { styled, css } = createStitches({
   theme: {
-    colors: {},
+    colors: {
+      white: '#fff',
+      ...mint,
+      ...blackA,
+      ...mauve,
+    },
     fontSizes: {
+      xsm: '0.8rem',
       sm: '1rem',
       md: '2rem',
       lg: '4rem',
+    },
+    radii: {
+      1: '4px',
+      2: '8px',
     },
   },
   media: {
