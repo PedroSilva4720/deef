@@ -6,12 +6,6 @@ export default {
   title: 'Select',
   component: Select,
   parameters: {
-    viewMode: 'docs',
-    previewTabs: {
-      canvas: {
-        hidden: true,
-      },
-    },
     docs: {
       description: {
         component:
