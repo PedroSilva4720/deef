@@ -5,6 +5,20 @@ import { Select } from './Select';
 export default {
   title: 'Select',
   component: Select,
+  parameters: {
+    viewMode: 'docs',
+    previewTabs: {
+      canvas: {
+        hidden: true,
+      },
+    },
+    docs: {
+      description: {
+        component:
+          'Componente baseado no select padrão do html, que recebe como parâmetro "options" que é um array de opções para dentro do select; "label", que é utilizado como rótulo do select; "placeholder" que é o valor padrão mostrado no select; "displayLabel" para escolher se o rótulo aparece em tela e "setFunction", uma função para salvar o valor do componente.',
+      },
+    },
+  },
 } as ComponentMeta<typeof Select>;
 
 export const Primary: ComponentStory<typeof Select> = ({

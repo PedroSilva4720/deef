@@ -10,7 +10,7 @@ export const Select: React.FC<{
   placeholder?: string;
   displayLabel: boolean;
   setFunction: (value: string) => void;
-}> = ({ options, label, placeholder, setFunction, displayLabel }) => {
+}> = ({ options, label, placeholder, setFunction, displayLabel = false }) => {
   const uuid = uuidV4();
   return (
     <SelectComponents.SelectContainer>
