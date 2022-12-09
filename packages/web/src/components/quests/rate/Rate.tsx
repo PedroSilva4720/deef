@@ -18,11 +18,10 @@ export const Rate: React.FC<{
       >
         {label}
       </RateComponents.RateLabel>
-      <ToolbarRadix.Root aria-label='Rate Options'>
-        <ToolbarRadix.ToggleGroup
+      <ToolbarRadix.Root aria-label='Rate Options' id={uuid}>
+        <RateComponents.RateToggleGroup
           type='single'
-          defaultValue='center'
-          aria-label='Text alignment'
+          aria-label={`Rate ${label}`}
           onValueChange={setFunction}
         >
           <RateComponents.RateToggleItem value='1' aria-label='value 1'>
@@ -55,7 +54,7 @@ export const Rate: React.FC<{
           <RateComponents.RateToggleItem value='10' aria-label='value 10'>
             10
           </RateComponents.RateToggleItem>
-        </ToolbarRadix.ToggleGroup>
+        </RateComponents.RateToggleGroup>
       </ToolbarRadix.Root>
     </RateComponents.RateContainer>
   );

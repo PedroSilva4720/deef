@@ -9,7 +9,9 @@ export const SelectContainer = styled('div', {
   gap: 5,
 });
 export const SelectLabel = styled(Root, {
-  color: '$mint11',
+  color: '$grass11',
+  fontSize: '$sm',
+  fontWeight: 400,
 });
 
 export const SelectTrigger = styled(SelectRadix.Trigger, {
@@ -24,19 +26,24 @@ export const SelectTrigger = styled(SelectRadix.Trigger, {
   gap: '1rem',
   borderStyle: 'solid',
   backgroundColor: '$white',
-  color: '$mint11',
+  color: '$mauve11',
   boxShadow: 'none',
-  '&:hover': { backgroundColor: '$mint3', transition: '0.2s' },
+  '&:hover': {
+    backgroundColor: '$grass3',
+    transition: '0.2s',
+    '& svg': { color: '$grass11' },
+  },
   '&:focus': {
-    border: 'solid 3px $mint9',
+    border: 'solid 3px $grass9',
     outline: 'none',
     borderRadius: '$2',
   },
-  '&[data-placeholder]': { color: '$mint11' },
+  '&[data-placeholder]': { color: '$mauve11' },
+  '&[data-placeholder]:hover': { color: '$grass11' },
 });
 
 export const SelectIcon = styled(SelectRadix.SelectIcon, {
-  color: '$mint11',
+  color: '$mauve11',
   alignItems: 'center',
 });
 
@@ -50,7 +57,7 @@ export const SelectContent = styled(SelectRadix.Content, {
 
 export const SelectViewport = styled(SelectRadix.Viewport, {
   padding: '0.3rem',
-  border: 'solid 1px $mint11',
+  border: 'solid 1px $grass11',
   borderRadius: '$2',
 });
 
@@ -58,7 +65,7 @@ export const SelectItem = styled(SelectRadix.Item, {
   fontSize: '$xsm',
 
   lineHeight: 1,
-  color: '$mint11',
+  color: '$grass11',
   borderRadius: '$1',
   display: 'flex',
   alignItems: 'center',
@@ -75,8 +82,8 @@ export const SelectItem = styled(SelectRadix.Item, {
 
   '&[data-highlighted]': {
     outline: 'none',
-    backgroundColor: '$mint9',
-    color: '$mint1',
+    backgroundColor: '$grass11',
+    color: '$grass1',
   },
 });
 
@@ -95,7 +102,7 @@ const scrollButtonStyles = {
   justifyContent: 'center',
   height: 25,
   backgroundColor: 'white',
-  color: '$mint11',
+  color: '$grass11',
   cursor: 'default',
 };
 

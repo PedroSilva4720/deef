@@ -28,7 +28,7 @@ export const Primary: ComponentStory<typeof Rate> = ({
 );
 
 Primary.args = {
-  label: 'Rate Input',
+  label: 'Rate Label',
   setFunction: value => console.log(value),
   displayLabel: false,
 };

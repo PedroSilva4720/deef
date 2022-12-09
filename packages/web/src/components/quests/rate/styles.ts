@@ -3,7 +3,9 @@ import { Root } from '@radix-ui/react-label';
 import * as ToolbarRadix from '@radix-ui/react-toolbar';
 
 export const RateLabel = styled(Root, {
-  color: '$mint11',
+  color: '$grass11',
+  fontSize: '$sm',
+  fontWeight: 400,
 });
 
 export const RateContainer = styled('div', {
@@ -31,15 +33,21 @@ export const RateToggleItem = styled(ToolbarRadix.ToggleItem, {
   backgroundColor: '$white',
   boxSizing: 'border-box',
   marginLeft: 2,
-  '&:hover': { backgroundColor: '$mint3', color: '$mint11' },
+  '&:hover': { backgroundColor: '$grass3', color: '$grass11' },
   '&:focus': {
     position: 'relative',
-    boxShadow: `0 0 0 2px $mint7`,
-    border: 'solid 3px $mint9',
+    boxShadow: `0 0 0 2px $grass7`,
+    border: 'solid 3px $grass9',
   },
   '&:first-child': { marginLeft: 0 },
   '&[data-state=on]': {
-    backgroundColor: '$mint5',
-    color: '$mint11',
+    backgroundColor: '$grass5',
+    color: '$grass11',
+    border: 'solid 2px $grass11',
   },
+});
+
+export const RateToggleGroup = styled(ToolbarRadix.ToggleGroup, {
+  display: 'inline-flex',
+  gap: 5,
 });

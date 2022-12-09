@@ -1,13 +1,13 @@
-import { mint, blackA, mauve } from '@radix-ui/colors';
+import { mint, blackA, mauve, grass, yellow } from '@radix-ui/colors';
 import { createStitches } from '@stitches/react';
 
 export const { styled, css } = createStitches({
   theme: {
     colors: {
       white: '#fff',
-      ...mint,
       ...blackA,
       ...mauve,
+      ...grass,
     },
     fontSizes: {
       xsm: '0.8rem',

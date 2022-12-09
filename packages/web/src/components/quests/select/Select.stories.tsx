@@ -33,7 +33,7 @@ export const Primary: ComponentStory<typeof Select> = ({
 
 Primary.args = {
   options: ['Apple', 'Banana', 'Orange'],
-  label: 'Select Input',
+  label: 'Select Label',
   placeholder: 'Choose a fruit',
   setFunction: value => console.log(value),
   displayLabel: false,
