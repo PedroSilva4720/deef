@@ -1,14 +1,14 @@
 import { styled } from '../../../styles';
 import { Root } from '@radix-ui/react-label';
 
-export const ShortInputContainer = styled('div', {
+export const LongInputContainer = styled('div', {
   display: 'flex',
   fontFamily: '"Inter", sans-serif',
   flexDirection: 'column',
   gap: 5,
 });
 
-export const ShortInputInput = styled('input', {
+export const LongInputTextArea = styled('textarea', {
   boxSizing: 'border-box',
   display: 'flex',
   alignItems: 'center',
@@ -16,7 +16,7 @@ export const ShortInputInput = styled('input', {
   border: 'solid 1px $mauve11',
   width: '100%',
   maxWidth: 600,
-  height: 35,
+  height: 200,
   resize: 'none',
   borderRadius: '$1',
   padding: '0.5rem 1rem',
@@ -33,7 +33,7 @@ export const ShortInputInput = styled('input', {
   },
 });
 
-export const ShortInputLabel = styled(Root, {
+export const LongInputLabel = styled(Root, {
   color: '$grass11',
   fontSize: '$sm',
   fontWeight: 400,

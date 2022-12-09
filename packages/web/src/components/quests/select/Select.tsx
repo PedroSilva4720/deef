@@ -1,7 +1,7 @@
 import React from 'react';
 import * as SelectRadix from '@radix-ui/react-select';
 import { FiChevronDown, FiChevronUp, FiCheck } from 'react-icons/fi';
-import * as SelectComponents from './style';
+import * as SelectComponents from './styles';
 import { v4 as uuidV4 } from 'uuid';
 
 export const Select: React.FC<{
