@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { LongInput } from './LongInput';
 
 export default {
-  title: 'LongInput',
+  title: 'quests/LongInput',
   component: LongInput,
   parameters: {
     docs: {

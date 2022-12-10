@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { ShortInput } from './ShortInput';
 
 export default {
-  title: 'ShortInput',
+  title: 'quests/ShortInput',
   component: ShortInput,
   parameters: {
     docs: {

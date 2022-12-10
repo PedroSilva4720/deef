@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Rate } from './Rate';
 
 export default {
-  title: 'Rate',
+  title: 'quests/Rate',
   component: Rate,
   parameters: {
     docs: {

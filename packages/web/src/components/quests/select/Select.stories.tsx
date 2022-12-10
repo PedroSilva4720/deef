@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Select } from './Select';
 
 export default {
-  title: 'Select',
+  title: 'quests/Select',
   component: Select,
   parameters: {
     docs: {
