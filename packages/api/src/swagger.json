@@ -98,12 +98,21 @@
       }
     },
 
-    "/user/name": {
+    "/user/name/{UserId}": {
       "patch": {
         "summary": "Update user's name",
         "tags": ["user"],
         "description": "Update user's name",
         "parameters": [
+          {
+            "name": "UserId",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "The User ID"
+          },
           {
             "in": "header",
             "name": "auth",
@@ -137,12 +146,37 @@
         }
       }
     },
-    "/user/password": {
+    "/user/password/{UserId}": {
       "patch": {
         "summary": "Update user's password",
         "tags": ["user"],
         "description": "update user's password",
+        "requestBody": {
+          "required": true,
+
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "newPassword": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
         "parameters": [
+          {
+            "name": "UserId",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "The User ID"
+          },
           {
             "in": "header",
             "name": "auth",
@@ -182,12 +216,23 @@
             }
           }
         }
-      },
+      }
+    },
+    "/user/{UserId}": {
       "delete": {
         "summary": "Delete user",
         "tags": ["user"],
         "description": "Delete user",
         "parameters": [
+          {
+            "name": "UserId",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "The User ID"
+          },
           {
             "in": "header",
             "name": "auth",

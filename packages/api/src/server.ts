@@ -1,10 +1,12 @@
 import express, { NextFunction, Request, Response } from 'express';
 import cors from 'cors';
-import { router } from './router';
+import { userRouter } from './routes/user';
+import { questRouter } from './routes/quest';
+import { CompanyRouter } from './routes/company';
 import swaggerUi from 'swagger-ui-express';
 import * as dotenv from 'dotenv';
 
-import swaggerDocument from './swager.json';
+import swaggerDocument from './swagger.json';
 import { IInternalServerError } from './errors/Errors';
 
 dotenv.config();
@@ -17,7 +19,9 @@ app.use(express.json());
 
 app.use(cors());
 
-app.use(router);
+app.use(userRouter);
+app.use(questRouter);
+app.use(CompanyRouter);
 
 app.use(
   (
@@ -27,7 +31,7 @@ app.use(
     next: NextFunction
   ) => {
     if (error) {
-      return res.status(error.statusCode).json(error.message);
+      return res.json(error.message);
     } else {
       next();
     }

@@ -10,3 +10,6 @@ export const credentialsDecoderByBasicAuth = (basicAuth: String) => {
 
   return { email, password };
 };
+
+export const resolver = handlerFn => (req, res, next) =>
+  Promise.resolve(handlerFn(req, res, next)).catch(error => next(error));

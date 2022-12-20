@@ -2,7 +2,7 @@
     "compilerOptions": {
         "outDir": "dist/js",
         "rootDir": "./src",
-        "target": "ES6",
+        "target": "ES2021",
         "noEmitOnError": true,
         "esModuleInterop": true,
         "moduleResolution": "node",
