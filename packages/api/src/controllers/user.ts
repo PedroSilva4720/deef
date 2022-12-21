@@ -1,4 +1,4 @@
-import { UserModel } from './../model/user';
+import { UserModel } from '../models/user';
 import { Request, Response } from 'express';
 import { hash } from 'argon2';
 
