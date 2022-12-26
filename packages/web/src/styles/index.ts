@@ -47,5 +47,10 @@ export const { styled, css } = createStitches({
       paddingTop: value,
       paddingBottom: value,
     }),
+    underline: (color: string) => ({
+      textDecoration: 'underline',
+      textDecorationColor: color,
+      textDecorationThickness: '0.1rem',
+    }),
   },
 });

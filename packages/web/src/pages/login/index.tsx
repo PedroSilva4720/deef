@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Button } from '../../components/button/Button';
 import { ShortInput } from '../../components/quests/shortInput/ShortInput';
+import { Footer } from '../../modules/footer/footer';
 import * as LoginComponents from './styles';
 
 export const LoginPage: React.FC = () => {
@@ -25,6 +26,7 @@ export const LoginPage: React.FC = () => {
           <Button type='submit' variant='grass' placeholder='Login' />
         </LoginComponents.Form>
       </LoginComponents.Container>
+      <Footer />
     </>
   );
 };
