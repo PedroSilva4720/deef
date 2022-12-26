@@ -18,6 +18,7 @@ export const { styled, css } = createStitches({
     },
     space: {
       btn: '0.5rem 1rem',
+      gap: '25px',
     },
     radii: {
       1: '4px',

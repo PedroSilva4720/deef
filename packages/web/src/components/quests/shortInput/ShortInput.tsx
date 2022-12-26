@@ -1,13 +1,15 @@
 import React from 'react';
 import * as ShortInputComponents from './styles';
 import { v4 as uuidV4 } from 'uuid';
+import { ShortInputProps } from './shortInput.d';
 
-export const ShortInput: React.FC<{
-  placeholder: string;
-  label: string;
-  displayLabel: boolean;
-  setFunction: (value: string) => void;
-}> = ({ placeholder, label, displayLabel = false, setFunction }) => {
+export const ShortInput: React.FC<ShortInputProps> = ({
+  placeholder,
+  label,
+  displayLabel = false,
+  setFunction,
+  ...props
+}) => {
   const uuid = uuidV4();
 
   return (
@@ -22,6 +24,7 @@ export const ShortInput: React.FC<{
         onChange={event => setFunction(event.target.value)}
         id={uuid}
         placeholder={placeholder}
+        {...props}
       />
     </ShortInputComponents.ShortInputContainer>
   );
