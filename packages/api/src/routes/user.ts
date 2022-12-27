@@ -9,26 +9,23 @@ export const userRouter = Router();
 const Controllers = new UserControllers();
 
 userRouter.get(
-  '/user',
+  '/',
   resolver(middlewares.userLogin),
   resolver(middlewares.generateJwt)
 );
-userRouter.post(
-  '/user/:companyId',
-  resolver(Controllers.createUserByCompanyId)
-);
+userRouter.post('/:companyId', resolver(Controllers.createUserByCompanyId));
 userRouter.patch(
-  '/user/name/:id',
+  '/name/:id',
   resolver(middlewares.verifyJwt),
   resolver(Controllers.updateUserName)
 );
 userRouter.patch(
-  '/user/password/:id',
+  '/password/:id',
   resolver(middlewares.verifyJwt),
   resolver(Controllers.updateUserPassword)
 );
 userRouter.delete(
-  '/user/:id',
+  '/:id',
   resolver(middlewares.verifyJwt),
   resolver(Controllers.deleteUser)
 );

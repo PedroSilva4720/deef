@@ -8,9 +8,9 @@ export const questRouter = Router();
 
 const Controllers = new QuestControllers();
 
-questRouter.get('/quest/:id', resolver(Controllers.getQuest));
+questRouter.get('/:id', resolver(Controllers.getQuest));
 questRouter.post(
-  '/quest/:id',
+  '/:id',
   resolver(middlewares.verifyJwt),
-  resolver(Controllers.modifyQuest)
+  resolver(Controllers.updateQuest)
 );

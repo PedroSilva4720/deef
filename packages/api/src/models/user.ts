@@ -1,14 +1,14 @@
-import { UserServices } from '../services/user';
+import { UserRepository } from '../repositories/user';
 import { hash } from 'argon2';
 
 export class UserModel {
-  public name;
-  public email;
-  public password;
-  public companyId;
-  public id;
-  public passwordHash;
-  public createdAt;
+  name: string;
+  email: string;
+  password: string;
+  companyId: string;
+  id: string;
+  passwordHash: string;
+  createdAt: Date;
   constructor() {
     this.createdAt = new Date();
   }
@@ -16,9 +16,9 @@ export class UserModel {
   async create() {
     this.passwordHash = await hash(this.password);
 
-    const Service = new UserServices();
+    const Repository = new UserRepository();
 
-    Service.create(
+    Repository.create(
       this.name,
       this.email,
       this.passwordHash,
@@ -27,5 +27,23 @@ export class UserModel {
     );
 
     return { status: 201, message: 'Criado com sucesso!' };
+  }
+
+  updateName(newUserName: string) {
+    const Repository = new UserRepository();
+    Repository.updateUsername(this.id, newUserName);
+  }
+
+  async updatePassword(newPassword: string) {
+    const Repository = new UserRepository();
+    const passwordHash = await hash(newPassword);
+
+    Repository.updatePassword(this.id, passwordHash);
+  }
+
+  delete() {
+    const Repository = new UserRepository();
+
+    Repository.deleteUser(this.id);
   }
 }

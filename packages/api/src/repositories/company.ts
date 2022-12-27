@@ -1,6 +1,6 @@
 import { prisma } from '../prisma';
 
-export class CompanyServices {
+export class CompanyRepository {
   constructor() {}
 
   async create(companyName, companyUsername) {
@@ -12,13 +12,14 @@ export class CompanyServices {
       },
     });
   }
-  async updateCompanyName(id, newCompanyName) {
+  async updateCompanyName(id, newCompanyName, newCompanyUsername) {
     await prisma.company.update({
       where: {
         id,
       },
       data: {
         companyName: newCompanyName,
+        companyUsername: newCompanyUsername,
       },
     });
   }

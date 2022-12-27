@@ -1,6 +1,6 @@
 import { prisma } from '../prisma';
 
-export class UserServices {
+export class UserRepository {
   constructor() {}
 
   async create(name, email, passwordHash, companyId, createdAt) {
@@ -16,7 +16,6 @@ export class UserServices {
   }
 
   async updateUsername(id, newUserName) {
-    console.log('entrou nessa merda');
     await prisma.user.update({
       where: {
         id,

@@ -7,4 +7,4 @@ export const CompanyRouter = Router();
 
 const Controllers = new CompanyControllers();
 
-CompanyRouter.post('/company', resolver(Controllers.createCompany));
+CompanyRouter.post('/', resolver(Controllers.createCompany));

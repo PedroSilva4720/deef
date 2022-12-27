@@ -1,6 +1,6 @@
 import { prisma } from '../prisma';
 
-export class QuestServices {
+export class QuestRepository {
   constructor() {}
   async get(id) {
     const quests = await prisma.quests.findMany({
@@ -13,7 +13,7 @@ export class QuestServices {
     return quests[0].quests;
   }
 
-  async modify(data, id) {
+  async update(id, data) {
     await prisma.quests.create({
       data: {
         quests: data,

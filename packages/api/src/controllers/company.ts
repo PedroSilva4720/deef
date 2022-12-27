@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
-import { CompanyServices } from '../services/company';
+
+import { CompanyModel } from './../models/company';
 
 export class CompanyControllers {
   constructor() {}
@@ -7,12 +8,10 @@ export class CompanyControllers {
   async createCompany(req: Request, res: Response) {
     const { companyName } = req.body;
 
-    const Services = new CompanyServices();
-
-    const userName = companyName.toLowerCase().replaceAll(' ', '-');
-
     try {
-      Services.create(companyName, userName);
+      const Model = new CompanyModel();
+
+      Model.create(companyName);
 
       return res.status(201).json({ message: 'Criado com sucesso!' });
     } catch (error) {
@@ -24,10 +23,11 @@ export class CompanyControllers {
     const newCompanyName = req.body;
     const id = req.params.id;
 
-    const Services = new CompanyServices();
-
     try {
-      Services.updateCompanyName(id, newCompanyName);
+      const Model = new CompanyModel();
+      Model.id = id;
+
+      Model.updateName(newCompanyName);
       return res.status(200).json({ message: 'Nome atualizado com sucesso!' });
     } catch (error) {
       throw new Error(error);

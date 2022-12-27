@@ -1,20 +1,23 @@
-import { InternalServerError } from './../errors/Errors';
-import { userLogin } from './../middlewares/middleware';
 import { Request, Response } from 'express';
-import { QuestServices } from '../services/quest';
+
+import { InternalServerError } from './../errors/Errors';
+import { QuestModel } from '../models/quest';
 
 export class QuestControllers {
   constructor() {}
 
-  async modifyQuest(req: Request, res: Response) {
+  async updateQuest(req: Request, res: Response) {
     const { id } = req.params;
 
     const data = req.body;
-    const Service = new QuestServices();
 
     try {
-      Service.modify(data, id);
-      return res.status(201).json({ message: 'Atualizado com sucesso' });
+      const Model = new QuestModel();
+      Model.id = id;
+
+      const { status, message } = Model.update(data);
+
+      return res.status(status).json({ message });
     } catch (error) {
       throw new InternalServerError(error);
     }
@@ -23,10 +26,11 @@ export class QuestControllers {
   async getQuest(req: Request, res: Response) {
     const { id } = req.params;
 
-    const Service = new QuestServices();
-
     try {
-      const lastQuests = await Service.get(id);
+      const Model = new QuestModel();
+      Model.id = id;
+
+      const lastQuests = await Model.get();
 
       return res.json(lastQuests);
     } catch (error) {

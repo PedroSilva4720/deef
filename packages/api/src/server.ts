@@ -19,9 +19,9 @@ app.use(express.json());
 
 app.use(cors());
 
-app.use(userRouter);
-app.use(questRouter);
-app.use(CompanyRouter);
+app.use('/user', userRouter);
+app.use('/quest', questRouter);
+app.use('company', CompanyRouter);
 
 app.use(
   (
