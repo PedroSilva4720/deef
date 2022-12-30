@@ -8,9 +8,11 @@ export const Select: React.FC<{
   options: string[];
   label: string;
   placeholder?: string;
-  displayLabel: boolean;
-  setFunction: (value: string) => void;
+  setFunction: React.Dispatch<React.SetStateAction<any>>;
+  displayLabel?: boolean;
 }> = ({ options, label, placeholder, setFunction, displayLabel = false }) => {
+  console.warn('Select component is disable indefinitely');
+
   const uuid = uuidV4();
   return (
     <SelectComponents.SelectContainer>

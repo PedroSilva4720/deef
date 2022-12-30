@@ -1,5 +1,5 @@
 import { blackA, mauve, grass, red } from '@radix-ui/colors';
-import { createStitches } from '@stitches/react';
+import { createStitches, globalCss } from '@stitches/react';
 
 export const { styled, css } = createStitches({
   theme: {
@@ -52,5 +52,19 @@ export const { styled, css } = createStitches({
       textDecorationColor: color,
       textDecorationThickness: '0.1rem',
     }),
+  },
+});
+
+export const globalStyle = globalCss({
+  '*': {
+    margin: 0,
+    padding: 0,
+    border: 0,
+  },
+  'body, html, #root': {
+    height: '100%',
+  },
+  'body, input, textarea': {
+    fontFamily: '"Inter", sans-serif',
   },
 });

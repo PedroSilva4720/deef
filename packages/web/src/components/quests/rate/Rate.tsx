@@ -5,8 +5,8 @@ import { v4 as uuidV4 } from 'uuid';
 
 export const Rate: React.FC<{
   label: string;
-  displayLabel: boolean;
-  setFunction: (value: string) => void;
+  setFunction: React.Dispatch<React.SetStateAction<any>>;
+  displayLabel?: boolean;
 }> = ({ label, displayLabel = false, setFunction }) => {
   const uuid = uuidV4();
 
