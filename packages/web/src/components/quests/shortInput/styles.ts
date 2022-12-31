@@ -31,6 +31,13 @@ export const ShortInputInput = styled('input', {
     border: 'solid 3px $grass11',
     outline: 'none',
   },
+  '&::-webkit-outer-spin-button, &::-webkit-inner-spin-button': {
+    '-webkit-appearance': 'none',
+    margin: 0,
+  },
+  '&[type=number]': {
+    '-moz-appearance': 'textfield',
+  },
 });
 
 export const ShortInputLabel = styled(Root, {

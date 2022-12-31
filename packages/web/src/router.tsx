@@ -1,5 +1,6 @@
 import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { CreateCostumer } from './pages/createCostumer';
 import { LoginPage } from './pages/login';
 import { Quest } from './pages/quests';
 import { globalStyle } from './styles';
@@ -21,6 +22,10 @@ export const Router = () => {
     {
       path: '/login',
       element: <LoginPage />,
+    },
+    {
+      path: '/feedback/:company',
+      element: <CreateCostumer />,
     },
   ]);
 
