@@ -30,9 +30,9 @@ export class QuestControllers {
       const Model = new QuestModel();
       Model.id = id;
 
-      const lastQuests = await Model.get();
+      const { companyName, lastQuests } = await Model.get();
 
-      return res.json(lastQuests);
+      return res.json({ companyName, lastQuests });
     } catch (error) {
       throw new InternalServerError(error);
     }

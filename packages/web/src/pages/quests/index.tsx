@@ -6,11 +6,14 @@ import { getQuests } from './utils';
 import * as QuestComponents from './styles';
 
 interface IQuest {
-  name: string;
-  type: 'rate' | 'select' | 'shortInput' | 'longInput';
-  label: string;
-  content: string[];
-  placeholder: string;
+  lastQuests: {
+    name: string;
+    type: 'rate' | 'select' | 'shortInput' | 'longInput';
+    label: string;
+    content: string[];
+    placeholder: string;
+  }[];
+  companyName: string;
 }
 
 export const Quest: React.FC = () => {
@@ -20,12 +23,12 @@ export const Quest: React.FC = () => {
 
   getQuests(company!).then(data => setData(data));
 
-  const Quests = ({ data }: { data: IQuest[] | undefined }) => {
+  const Quests = ({ data }: { data: IQuest | undefined }) => {
     if (data != undefined) {
       return (
         <>
           <QuestComponents.Form>
-            {data.map((item: IQuest, index: number) => {
+            {data.lastQuests.map((item, index) => {
               return (
                 <div key={item.name}>
                   <MapQuestType

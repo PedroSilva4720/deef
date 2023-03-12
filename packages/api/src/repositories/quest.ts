@@ -8,9 +8,13 @@ export class QuestRepository {
         companyId: id,
       },
       take: -1,
+      select: {
+        company: true,
+        quests: true,
+      },
     });
 
-    return quests[0].quests;
+    return quests[0];
   }
 
   async update(id, data) {

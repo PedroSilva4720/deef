@@ -32,9 +32,11 @@ export class QuestModel {
     return { status: 201, message: 'Atualizado com sucesso!' };
   }
 
-  get() {
+  async get() {
     const Repository = new QuestRepository();
 
-    return Repository.get(this.id);
+    const quest = await Repository.get(this.id);
+
+    return { companyName: quest.company.companyName, lastQuests: quest.quests };
   }
 }
