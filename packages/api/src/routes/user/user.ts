@@ -1,8 +1,8 @@
 import { Router } from 'express';
 
-import * as middlewares from '../middlewares/middleware';
-import { UserControllers } from '../controllers/user';
-import { resolver } from '../utils';
+import * as middlewares from '../../middlewares/middleware';
+import { UserControllers } from '../../controllers/user';
+import { resolver } from '../../utils';
 
 export const userRouter = Router();
 

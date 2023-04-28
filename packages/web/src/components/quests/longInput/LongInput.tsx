@@ -5,6 +5,7 @@ import { v4 as uuidV4 } from 'uuid';
 export const LongInput: React.FC<{
   placeholder?: string;
   label: string;
+  name: string;
   setFunction: React.Dispatch<React.SetStateAction<any>>;
   displayLabel?: boolean;
 }> = ({ placeholder, label, displayLabel = false, setFunction }) => {

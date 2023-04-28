@@ -10,14 +10,27 @@ export const MapQuestType: React.FC<{
   content: string[];
   displayLabel: boolean;
   placeholder: string;
+  name: string;
+  value: { name: string; value: string }[] | undefined;
 }> = (
-  { label, type, setFunc, content, displayLabel = false, placeholder },
+  {
+    label,
+    type,
+    setFunc,
+    content,
+    displayLabel = false,
+    placeholder,
+    name,
+    value,
+  },
   ...props
 ) => {
   if (type == 'rate') {
     return (
       <>
         <Rate
+          value={value?.filter(item => item.name == name)[0].value}
+          name={name}
           label={label}
           setFunction={setFunc}
           displayLabel={displayLabel}
@@ -45,6 +58,7 @@ export const MapQuestType: React.FC<{
     return (
       <>
         <ShortInput
+          name={name}
           label={label}
           setFunction={setFunc}
           displayLabel={displayLabel}
@@ -58,6 +72,7 @@ export const MapQuestType: React.FC<{
     return (
       <>
         <LongInput
+          name={name}
           label={label}
           setFunction={setFunc}
           displayLabel={displayLabel}

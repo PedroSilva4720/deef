@@ -1,6 +1,7 @@
 import { styled } from '../../../styles';
 import { Root } from '@radix-ui/react-label';
 import * as ToolbarRadix from '@radix-ui/react-toolbar';
+import * as ToggleGroup from '@radix-ui/react-toggle-group';
 
 export const RateLabel = styled(Root, {
   color: '$grass11',
@@ -15,7 +16,7 @@ export const RateContainer = styled('div', {
   gap: 5,
 });
 
-export const RateToggleItem = styled(ToolbarRadix.ToggleItem, {
+export const RateToggleItem = styled(ToggleGroup.Item, {
   all: 'unset',
   border: 'solid 1px $mauve11',
   flex: '0 0 auto',

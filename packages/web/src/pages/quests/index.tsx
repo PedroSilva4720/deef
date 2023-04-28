@@ -21,6 +21,9 @@ export const Quest: React.FC = () => {
   const { company } = useParams();
   const [data, setData] = useState();
 
+  const [userResponse, setUserResponse] =
+    useState<{ name: string; value: string }[]>();
+
   getQuests(company!).then(data => setData(data));
 
   const Quests = ({ data }: { data: IQuest | undefined }) => {
@@ -32,9 +35,11 @@ export const Quest: React.FC = () => {
               return (
                 <div key={item.name}>
                   <MapQuestType
+                    value={userResponse}
+                    name={item.name}
                     label={item.label}
                     type={item.type}
-                    setFunc={console.log}
+                    setFunc={setUserResponse}
                     content={item.content}
                     placeholder={item.placeholder}
                     displayLabel

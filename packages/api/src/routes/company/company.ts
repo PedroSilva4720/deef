@@ -1,7 +1,7 @@
 import { Router } from 'express';
-import { resolver } from '../utils';
 
-import { CompanyControllers } from '../controllers/company';
+import { resolver } from '../../utils';
+import { CompanyControllers } from '../../controllers/company';
 
 export const CompanyRouter = Router();
 
