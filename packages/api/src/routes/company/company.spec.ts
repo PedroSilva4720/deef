@@ -5,7 +5,11 @@ import { app } from '../../server';
 import { prisma } from '../../prisma';
 
 beforeAll(async () => {
-  await prisma.company.deleteMany();
+  const companys = await prisma.company.findMany();
+
+  if (companys.length > 0) {
+    await prisma.company.deleteMany();
+  }
 });
 
 describe('Company tests switch', () => {

@@ -9,6 +9,7 @@
     "email": "pedro.silva4720@gmail.com"
   },
   "scripts": {
+    "test": "jest",
     "db:migrate": "prisma migrate dev",
     "dev": "nodemon src/app.ts",
     "precommit": "git add .",

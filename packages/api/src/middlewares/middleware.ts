@@ -23,13 +23,17 @@ export const userLogin = async (
     });
 
     if (!user) {
-      return res.status(401).json({ message: 'Usuário não encontrado.' });
+      return res.status(401).json({
+        message: 'Falha ao realizar login, por favor revise o email e a senha',
+      });
     }
 
     const passwordMatch = await verify(user.passwordHash, password);
 
     if (!passwordMatch) {
-      return res.status(401).json({ message: 'Senha incorreta.' });
+      return res.status(401).json({
+        message: 'Falha ao realizar login, por favor revise o email e a senha',
+      });
     }
 
     res.locals.user = { email };
